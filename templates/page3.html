@@ -1,0 +1,82 @@
+<html>
+ <head>
+	<link rel="stylesheet" type="text/css" media="screen" href="/media/stylesheet2.css" />
+
+
+	
+</head>
+ 
+<body>
+<div id="centeredcontent">
+
+<img src="http://assets0.twitter.com/images/twitter_logo_header.png">
+<br /><br /><br />
+
+{% for fol in entries %}
+ 
+        {% ifequal fol.0 "YES" %}
+ 
+        <div class="truemsg">
+
+        Yes. <a href="http://twitter.com/{{fol.1}}">@{{fol.1}}</a> is following 
+        <a href="http://twitter.com/{{fol.2}}">@{{fol.2}}</a> &#9786
+        
+        {% else %}
+
+        <div class="falsemsg">
+
+        No. <a href="http://twitter.com/{{fol.1}}">@{{fol.1}}</a> is not following
+        <a href="http://twitter.com/{{fol.2}}">@{{fol.2}}</a> &#9785
+        
+        {%  endifequal %}
+        
+        </div> <br/>
+        
+{% endfor %}
+ 
+ 
+ 
+<form action="." method="POST">
+ 
+	{{ form.following.errors }}
+	{{ form.follower.errors }}
+
+	<table> 
+		<tr>
+			<td class="big"> Is </td>
+			<td class="small"> {{ form.follower }} <br/>eg: scobleizer</td> 
+			<td class="big"> following </td> 
+			<td class="small"> {{ form.following }} <br/> eg: ginatrapani </td>
+		</tr>
+                <tr>
+                        <input type="hidden" name="old" value="{{ form_data }}">                                  
+	                <td colspan="4" class="middle"><br /><input type="submit" align="center" value="Find out!" /></td>
+                </tr>
+	</table>
+</form>
+<br /><br />
+
+<img src="http://code.google.com/appengine/images/appengine-noborder-120x30.gif"
+alt="Powered by Google App Engine" /><a href="http://www.djangoproject.com/"><img src="http://media.djangoproject.com/img/badges/djangomade124x25_grey.gif" border="0" alt="Made with Django." title="Made with Django." /></a>
+<br />
+<div class="footer">
+Feedback? tweet to <a href="http://twitter.com/scorpion032">@scorpion032</a>
+<!--
+  <a href="http://uswaretech.com/"> Uswaretech.com </a>
+ 
+-->
+</div>
+
+</div>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-8560731-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+</body>
+</html>
